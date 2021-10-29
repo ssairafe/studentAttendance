@@ -56,8 +56,16 @@ Vue.component('student-rows-component', {
             <a class="student-email" :href="'mailto:{{studentInfo.email}}'">{{studentInfo.email}}</a>
         </div>
         <div class="col-4">
+            <div v-if="studentInfo.attendance === null">
             <api-button class="mark-present-button btn btn-success" buttonTitle="Mark Present" @click.native="markPresent(studentInfo.studentId)"></api-button>
             <api-button class="mark-absent-button btn btn-danger" buttonTitle="Mark Absent" @click.native="markAbsent(studentInfo.studentId)"></api-button>
+            </div>
+            <div v-else-if="studentInfo.attendance === 0">
+                Absent
+            </div>
+            <div v-else>
+                Present
+            </div>
         </div>
     </div>
     </div>
